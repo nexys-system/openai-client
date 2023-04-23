@@ -1,3 +1,5 @@
+import { OpenAIResponse, Message } from "./type";
+
 const apiUrlPrefix = "https://api.openai.com/v1";
 
 const getChatCompletion = async (
