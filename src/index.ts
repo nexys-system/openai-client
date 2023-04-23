@@ -1,8 +1,8 @@
-import { OpenAIResponse, Message } from "./type";
+import { Message } from "./type";
 
 const apiUrlPrefix = "https://api.openai.com/v1";
 
-const getChatCompletion = async (
+export const getChatCompletion = async (
   messages: Message[],
   model: "gpt-3.5-turbo" | "gpt-4" = "gpt-3.5-turbo", 
   openApiKey: string
