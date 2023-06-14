@@ -39,8 +39,8 @@ export interface Payload {
   logprobs: number;
 }
 
-export type Role = 'user' | 'system' | 'assistant'
-export interface Message {role:Role, content:string}
+export type Role = 'user' | 'system' | 'assistant';
+export interface Message {role:Role, content:string};
 
 export interface PayloadFunctionType = 'string' | 'object';
 
