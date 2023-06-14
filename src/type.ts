@@ -1,4 +1,4 @@
-export type OpenAiModel = "text-davinci-003";
+export type OpenAiModel = "text-davinci-003" | "gpt-3.5-turbo" | "gpt-4";
 
 export interface OpenAIResponseChoice {
   text: string;
@@ -41,3 +41,28 @@ export interface Payload {
 
 export type Role = 'user' | 'system' | 'assistant'
 export interface Message {role:Role, content:string}
+
+export interface PayloadFunctionType = 'string' | 'object';
+
+export interface PayloadFunction {
+    name: string;
+    description: string;
+    parameters: {
+        type: PayloadFunctionType,
+        properties: {
+            location: {
+                type: PayloadFunctionType,
+                description: string,
+            },
+            unit: {type: PayloadFunctionType, enum?: string[]},
+        },
+        required: string[],
+    },
+}
+
+export interface Payload {
+  model: OpenAiModel,
+  messages: Message[],
+  functions?: PayloadFunction[]
+  function_call?: "auto",
+};
