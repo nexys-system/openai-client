@@ -1,4 +1,4 @@
-import { Message, Payload, OpenAiModel } from "./type";
+import { Message, PayloadChatCompletion, OpenAiModel } from "./type";
 
 const apiUrlPrefix = "https://api.openai.com/v1";
 
@@ -12,7 +12,7 @@ export const getChatCompletion = async (
     Authorization: "Bearer " + openApiKey,
   };
   
-  const data:Payload = {
+  const data:PayloadChatCompletion = {
     model,
     messages,
   };
