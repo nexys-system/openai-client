@@ -60,7 +60,7 @@ export interface PayloadFunction {
     },
 }
 
-export interface Payload {
+export interface PayloadChatCompletion {
   model: OpenAiModel,
   messages: Message[],
   functions?: PayloadFunction[]
