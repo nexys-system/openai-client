@@ -42,7 +42,7 @@ export interface Payload {
 export type Role = 'user' | 'system' | 'assistant';
 export interface Message {role:Role, content:string};
 
-export interface PayloadFunctionType = 'string' | 'object';
+export type PayloadFunctionType = 'string' | 'object';
 
 export interface PayloadFunction {
     name: string;
