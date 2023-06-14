@@ -1,10 +1,10 @@
-import { Message } from "./type";
+import { Message, Payload, OpenAiModel } from "./type";
 
 const apiUrlPrefix = "https://api.openai.com/v1";
 
 export const getChatCompletion = async (
   messages: Message[],
-  model: "gpt-3.5-turbo" | "gpt-4" = "gpt-3.5-turbo", 
+  model: OpenAiModel = "gpt-3.5-turbo", 
   openApiKey: string
 ): Promise<{ choices: { message: Message }[] }> => {
   const headers = {
@@ -12,7 +12,7 @@ export const getChatCompletion = async (
     Authorization: "Bearer " + openApiKey,
   };
   
-  const data = {
+  const data:Payload = {
     model,
     messages,
   };
