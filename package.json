@@ -1,6 +1,6 @@
 {
   "name": "@nexys/openai-client",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": false,
   "license": "MIT",
   "type": "module",
@@ -19,15 +19,36 @@
     "dist/*",
     "README.md"
   ],
+  {
+  "description": "A simple, type-safe OpenAI TypeScript client for creating chatbots and AI-powered applications, providing a convenient interface to the OpenAI API and supporting the GPT-3.5 Turbo model.",
   "keywords": [
-    "typescript",
-    "SDK"
-  ],
-  "dependencies": {},
-  "devDependencies": {
-    "@types/jest": "^29.5.1",
-    "jest": "^29.5.0",
-    "ts-jest": "^29.1.0",
-    "typescript": "^5.0.4"
-  }
+    "OpenAI",
+    "TypeScript",
+    "AI",
+    "Machine Learning",
+    "GPT-3.5 Turbo",
+    "Chatbots",
+    "Natural Language Processing",
+    "NLP",
+    "Artificial Intelligence",
+    "API Client",
+    "OpenAI API",
+    "GPT-3",
+    "Text Generation",
+    "AI Chat",
+    "AI Assistant",
+    "OpenAI TypeScript Client",
+    "AI API Wrapper",
+    "Automated Text Generation",
+    "AI Text Processing",
+    "Language Model API"
+  ]
+},
+"dependencies": {},
+"devDependencies": {
+  "@types/jest": "^29.5.1",
+  "jest": "^29.5.0",
+  "ts-jest": "^29.1.0",
+  "typescript": "^5.0.4"
+}
 }
