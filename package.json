@@ -19,7 +19,6 @@
     "dist/*",
     "README.md"
   ],
-  {
   "description": "A simple, type-safe OpenAI TypeScript client for creating chatbots and AI-powered applications, providing a convenient interface to the OpenAI API and supporting the GPT-3.5 Turbo model.",
   "keywords": [
     "OpenAI",
@@ -42,13 +41,12 @@
     "Automated Text Generation",
     "AI Text Processing",
     "Language Model API"
-  ]
-},
-"dependencies": {},
-"devDependencies": {
-  "@types/jest": "^29.5.1",
-  "jest": "^29.5.0",
-  "ts-jest": "^29.1.0",
-  "typescript": "^5.0.4"
-}
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^29.5.1",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.4"
+  }
 }
