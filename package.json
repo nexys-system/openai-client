@@ -3,10 +3,9 @@
   "version": "0.0.8",
   "private": false,
   "license": "MIT",
-  "type": "module",
   "scripts": {
     "start": "node ./dist/index.js",
-    "test": "echo \"disable tests for now, commonjs vs ESM...\"",
+    "test": "jest",
     "build": "tsc"
   },
   "repository": {

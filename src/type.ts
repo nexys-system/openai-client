@@ -9,6 +9,15 @@ export type ChatGPTModel =
   | "gpt-3.5-turbo-16k"
   | "gpt-3.5-turbo-16k-0613"; // "gpt-3.5-turbo" | "gpt-4";
 
+export type PayloadFunctionType = "string" | "object";
+
+export interface PayloadChatCompletion {
+  model: ChatGPTModel;
+  messages: Message[];
+  functions?: PayloadFunction[];
+  function_call?: "auto";
+}
+
 export interface OpenAIResponseChoice {
   text: string;
   index: 0;
@@ -48,6 +57,22 @@ export interface Payload {
   logprobs: number;
 }
 
+export interface PayloadFunction {
+  name: string;
+  description: string;
+  parameters: {
+    type: PayloadFunctionType;
+    properties: {
+      location: {
+        type: PayloadFunctionType;
+        description: string;
+      };
+      unit: { type: PayloadFunctionType; enum?: string[] };
+    };
+    required: string[];
+  };
+}
+
 export type Role = "user" | "system" | "assistant";
 export interface Message {
   role: Role;
@@ -58,11 +83,4 @@ export interface MessageResponse {
   role: Role;
   content: string | null;
   function_call?: { name: string; arguments: string };
-}
-
-export type JSONSchema = any;
-export interface Function {
-  name: string;
-  description?: string;
-  parameters: JSONSchema;
 }

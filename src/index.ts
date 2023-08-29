@@ -1,23 +1,31 @@
-import { Message, PayloadChatCompletion, ChatGPTModel } from "./type";
+import {
+  Message,
+  PayloadChatCompletion,
+  ChatGPTModel,
+  MessageResponse,
+  PayloadFunction,
+} from "./type";
 
 const apiUrlPrefix = "https://api.openai.com/v1";
 
-
-export const getChatCompletion = async ({
-  messages,
-  functions,
-  model = "gpt-3.5-turbo",
-}: {
-  messages: Message[];
-  functions?: Function[];
-  model?: ChatGPTModel;
-}, openApiKey: string): Promise<{ choices: { message: MessageResponse }[] }> =>  {
-  const data:PayloadChatCompletion = {
+export const getChatCompletion = async (
+  {
+    messages,
+    functions,
+    model = "gpt-3.5-turbo",
+  }: {
+    messages: Message[];
+    functions?: PayloadFunction[];
+    model?: ChatGPTModel;
+  },
+  openApiKey: string
+): Promise<{ choices: { message: MessageResponse }[] }> => {
+  const data: PayloadChatCompletion = {
     model,
     messages,
     functions,
   };
-  
+
   const headers = {
     "content-type": "application/json",
     Authorization: "Bearer " + openApiKey,
