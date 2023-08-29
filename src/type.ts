@@ -1,4 +1,13 @@
-export type OpenAiModel = "text-davinci-003" | "gpt-3.5-turbo" | "gpt-4";
+// https://platform.openai.com/docs/models/model-endpoint-compatibility
+export type ChatGPTModel =
+  | "gpt-4"
+  | "gpt-4-0613"
+  | "gpt-4-32k"
+  | "gpt-4-32k-0613"
+  | "gpt-3.5-turbo"
+  | "gpt-3.5-turbo-0613"
+  | "gpt-3.5-turbo-16k"
+  | "gpt-3.5-turbo-16k-0613"; // "gpt-3.5-turbo" | "gpt-4";
 
 export interface OpenAIResponseChoice {
   text: string;
@@ -16,7 +25,7 @@ export interface OpenAIResponse {
   id: string;
   object: "text_completion";
   created: number;
-  model: OpenAiModel;
+  model: ChatGPTModel;
   choices: OpenAIResponseChoice[];
   usage: {
     prompt_tokens: number;
@@ -27,7 +36,7 @@ export interface OpenAIResponse {
 
 // ref: https://platform.openai.com/docs/api-reference/completions/create#completions/create-model
 export interface Payload {
-  model: OpenAiModel;
+  model: ChatGPTModel;
   prompt: string;
   max_tokens: number;
   temperature: number;
@@ -39,30 +48,21 @@ export interface Payload {
   logprobs: number;
 }
 
-export type Role = 'user' | 'system' | 'assistant';
-export interface Message {role:Role, content:string};
-
-export type PayloadFunctionType = 'string' | 'object';
-
-export interface PayloadFunction {
-    name: string;
-    description: string;
-    parameters: {
-        type: PayloadFunctionType,
-        properties: {
-            location: {
-                type: PayloadFunctionType,
-                description: string,
-            },
-            unit: {type: PayloadFunctionType, enum?: string[]},
-        },
-        required: string[],
-    },
+export type Role = "user" | "system" | "assistant";
+export interface Message {
+  role: Role;
+  content: string;
 }
 
-export interface PayloadChatCompletion {
-  model: OpenAiModel,
-  messages: Message[],
-  functions?: PayloadFunction[]
-  function_call?: "auto",
-};
+export interface MessageResponse {
+  role: Role;
+  content: string | null;
+  function_call?: { name: string; arguments: string };
+}
+
+export type JSONSchema = any;
+export interface Function {
+  name: string;
+  description?: string;
+  parameters: JSONSchema;
+}
