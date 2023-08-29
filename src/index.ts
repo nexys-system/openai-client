@@ -1,35 +1,41 @@
-import { Message, PayloadChatCompletion, OpenAiModel } from "./type";
+import { Message, PayloadChatCompletion, ChatGPTModel } from "./type";
 
 const apiUrlPrefix = "https://api.openai.com/v1";
 
-export const getChatCompletion = async (
-  messages: Message[],
-  model: OpenAiModel = "gpt-3.5-turbo", 
-  openApiKey: string
-): Promise<{ choices: { message: Message }[] }> => {
-  const headers = {
-    "content-type": "application/json",
-    Authorization: "Bearer " + openApiKey,
-  };
-  
+
+export const getChatCompletion = async ({
+  messages,
+  functions,
+  model = "gpt-3.5-turbo",
+}: {
+  messages: Message[];
+  functions?: Function[];
+  model?: ChatGPTModel;
+}, openApiKey: string): Promise<{ choices: { message: MessageResponse }[] }> =>  {
   const data:PayloadChatCompletion = {
     model,
     messages,
+    functions,
+  };
+  
+  const headers = {
+    "content-type": "application/json",
+    Authorization: "Bearer " + openApiKey,
   };
 
   const body = JSON.stringify(data);
   const method = "POST";
 
-  const r = await fetch(apiUrlPrefix + "/chat/completions", {
+  const response = await fetch(apiUrlPrefix + "/chat/completions", {
     method,
     headers,
     body,
   });
 
-  if (r.status !== 200) {
-    const t = await r.text();
-    throw Error(`status: ${r.status}, ${t}`);
+  if (response.status !== 200) {
+    const t = await response.text();
+    throw Error(`status: ${response.status}, ${t}`);
   }
 
-  return r.json();
+  return response.json();
 };
