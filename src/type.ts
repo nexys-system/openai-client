@@ -84,3 +84,11 @@ export interface MessageResponse {
   content: string | null;
   function_call?: { name: string; arguments: string };
 }
+
+export interface ImageGenerationResponse {
+  created: number;
+  data: {
+    revised_prompt: string;
+    url: string;
+  }[];
+}
