@@ -53,16 +53,20 @@ export const getChatCompletion = async (
 export const generateImage = async (
   {
     prompt,
-    model,
+    model = "dall-e-3",
     n = 1,
     size = "1024x1024",
     quality = "standard",
+    response_format = "string",
+    style = "vivid",
   }: {
-    model: "dall-e-3";
     prompt: string;
+    model?: "dall-e-2" | "dall-e-3";
     n?: number;
-    size?: string;
+    size?: "1024x1024" | "1792x1024" | "1024x1792";
     quality?: "standard" | "hd";
+    response_format?: "string" | "b64_json";
+    style?: "vivid" | "natural";
   },
   openApiKey: string
 ): Promise<ImageGenerationResponse> => {
